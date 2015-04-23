@@ -81,8 +81,7 @@
         "scripts/debian/networking.sh",
         "scripts/debian/sudoers.sh",
         "scripts/common/vagrant.sh",
-        "scripts/common/vmtools.sh",
-        "scripts/debian/puppet.sh"
+        "scripts/common/vmtools.sh"
       ]
     },
     {
