@@ -3,13 +3,12 @@
     "mirror": "http://cdimage.debian.org/debian-cd",
     "puppet_manifest_dir": "hetznerza/kernels/puppet/manifests/nsdb",
     "puppet_module_paths": "hetznerza/kernels/puppet/modules",
-    "aws_access_key": "",
-    "aws_secret_key": "",
+    "aws_access_key": "AKIAJRWN6O4RD7BW23XQ",
+    "aws_secret_key": "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",
     "aws_instance_type": "t2.micro",
-    "aws_proxy": "172.18.9.168",
     "aws_region": "eu-west-1",
     "aws_source_ami": "ami-61e56916",
-    "aws_security_group_ids": "sg-c1082fa4,sg-aa1235cf",
+    "aws_security_group_ids": "sg-c1082fa4,sg-aa1235cf,sg-4867412d",
     "aws_subnet_id": "subnet-5188e534",
     "aws_vpc_id": "vpc-2e86374b"
   },
@@ -101,17 +100,6 @@
       ]
     },
     {
-      "type": "shell",
-      "only": ["amazon-ebs"],
-      "execute_command": "sudo -E bash '{{.Path}}'",
-      "inline": [
-        "[ -z '{{user `aws_proxy`}}' -o '{{user `aws_proxy`}}' = 'none' ] && exit 0",
-        "echo {{user `aws_proxy`}} gems.hetzner.co.za >> /etc/hosts",
-        "echo {{user `aws_proxy`}} mirror1.cpt1.host-h.net >> /etc/hosts",
-        "echo {{user `aws_proxy`}} mirror1.tst1.host-h.net >> /etc/hosts"
-      ]
-    },
-    {
       "type": "puppet-masterless",
       "manifest_file": "{{user `puppet_manifest_dir`}}/site.pp",
       "manifest_dir": "{{user `puppet_manifest_dir`}}",
@@ -133,5 +121,9 @@
         "scripts/common/minimize.sh"
       ]
     }
-  ]
+  ],
+  "push": {
+    "name": "hetznerza/nsdb",
+    "token": "9pvVn3U-Jvn9DR96YsGwkgRDQZf7yESzFKgiyxTmXXu54pxZ2zmUkrM6jMNv4DJFTg8"
+  }
 }
