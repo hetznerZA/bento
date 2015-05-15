@@ -1,6 +1,11 @@
 {
   "push": {
-    "name": "hetznerza/nsdb"
+    "name": "hetznerza/nsdb",
+    "exclude": [
+      "hetznerza/kernels/puppet/.git",
+      "hetznerza/kernels/puppet/external_nodes.yaml",
+      "hetznerza/kernels/puppet/hiera*"
+    ]
   },
   "variables": {
     "atlas_username": "hetznerza",
