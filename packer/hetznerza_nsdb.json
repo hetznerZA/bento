@@ -10,7 +10,7 @@
   "variables": {
     "atlas_username": "hetznerza",
     "atlas_name": "nsdb",
-    "puppet_manifest_dir": "hetznerza/kernels/puppet/manifests/{{env `ATLAS_NAME`}}",
+    "puppet_manifest_dir": "hetznerza/kernels/puppet/manifests/nsdb",
     "puppet_module_paths": "hetznerza/kernels/puppet/modules",
     "mirror": "http://cdimage.debian.org/debian-cd",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
@@ -83,6 +83,14 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "shell",
+      "only": ["amazon-ebs"],
+      "execute_command": "sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "scripts/debian/update.sh"
+      ]
+    },
     {
       "type": "shell",
       "only": ["virtualbox-iso"],
